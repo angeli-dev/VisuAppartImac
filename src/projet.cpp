@@ -25,6 +25,9 @@ static const Uint32 FRAMERATE_MILLISECONDS = 1000 / 60;
 
 int main(int argc, char** argv) 
 {
+
+    glutInit(&argc, argv);
+
     /* Initialisation de la SDL */
 
    if(SDL_Init(SDL_INIT_VIDEO) < 0) 
@@ -148,6 +151,7 @@ int main(int argc, char** argv)
                 
                 /* Touche clavier */
                case SDL_KEYDOWN:
+                    cout<<e.key.keysym.scancode<<endl;
                     switch(e.key.keysym.scancode) 
                     {   
                         case SDL_SCANCODE_ESCAPE :
