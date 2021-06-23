@@ -5,8 +5,6 @@
 
 void drawScene(Camera camera){
 
-	
-
 	/* Debut du dessin de la scène */
 	glPushMatrix();
 
@@ -24,11 +22,6 @@ void drawScene(Camera camera){
 	glColor3f(0.9 , 0.9, 1);
 	glutSolidCube(1);
 	glPopMatrix();
-
-
-
-	
-	
 
 	/* Fin du dessin */
 	glPopMatrix();
