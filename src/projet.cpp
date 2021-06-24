@@ -87,12 +87,15 @@ int main(int argc, char** argv)
     
     // Caméra mobile
     Camera maCamera;
-    maCamera.position=createVector(5, 5, 1);
-    maCamera.pointCible=createVector(50, 50, 1);
+    maCamera.position=createVector(30, 100, 60);
+    maCamera.pointCible=createVector(30, 0, 0);
     maCamera.axeVertical=createVector(0, 0, 1);
     maCamera.sensibilite=0.5;
-    maCamera.vitesse=0.2;
+    maCamera.vitesse=0.5;
     maCamera = setPointcible(maCamera, maCamera.pointCible);
+
+    bool modePerso=false;
+
 
     /* Boucle principale */
     int loop = 1;
@@ -106,7 +109,7 @@ int main(int argc, char** argv)
 	    glLoadIdentity();
 
 	    /* définition de la camera */
-        gluPerspective(70.0, (double) WINDOW_WIDTH/WINDOW_HEIGHT, 1.0, 100.0);
+        gluPerspective(70.0, (double) WINDOW_WIDTH/WINDOW_HEIGHT, 1.0, 200.0);
 
         /* reinitialisation des buffers : couleur et ZBuffer */
 	    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
@@ -139,6 +142,14 @@ int main(int argc, char** argv)
                 case SDL_MOUSEBUTTONUP: 
                     switch(e.button.button) 
                         case SDL_BUTTON_MIDDLE:
+                            if(modePerso==true){                      
+                                modePerso=false;
+                                cout<<"Caméra freefly"<<endl;
+                            }
+                            else{                      
+                                modePerso=true;
+                                cout<<"Caméra à hauteur fixe"<<endl;
+                            }
                         break;
                 default:
                      break;
@@ -161,24 +172,36 @@ int main(int argc, char** argv)
                         }    
                         // Avancée de la caméra
                         case SDL_SCANCODE_UP :
+                            if(modePerso==true){
+                                maCamera.position = createVector(maCamera.position.x, maCamera.position.y, 12);
+                            }
                             maCamera.position = addVectors(maCamera.position, multVector(maCamera.orientation, maCamera.vitesse));
                             maCamera.pointCible = addVectors(maCamera.position, maCamera.orientation);
                   
 			            break;
                         // Recul de la caméra
 		                case SDL_SCANCODE_DOWN :
+                            if(modePerso==true){
+                                maCamera.position = createVector(maCamera.position.x, maCamera.position.y, 12);
+                            }
 			                maCamera.position = subVectors(maCamera.position, multVector(maCamera.orientation, maCamera.vitesse));
                             maCamera.pointCible = addVectors(maCamera.position, maCamera.orientation);
                   
 			            break;
                         // Déplacement vers la gauche
 		                case SDL_SCANCODE_LEFT :
+                            if(modePerso==true){
+                                maCamera.position = createVector(maCamera.position.x, maCamera.position.y, 12);
+                            }
 			                maCamera.position = addVectors(maCamera.position, multVector(maCamera.deplacementLateral, maCamera.vitesse));
                             maCamera.pointCible = addVectors(maCamera.position, maCamera.orientation);
                       
 			            break;
                         // Déplacement vers la droite
 		                case SDL_SCANCODE_RIGHT :
+                            if(modePerso==true){
+                                maCamera.position = createVector(maCamera.position.x, maCamera.position.y, 12);
+                            }
 			                maCamera.position = subVectors(maCamera.position, multVector(maCamera.deplacementLateral, maCamera.vitesse));
                             maCamera.pointCible = addVectors(maCamera.position, maCamera.orientation);
                       

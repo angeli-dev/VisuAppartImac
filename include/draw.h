@@ -17,5 +17,7 @@ using namespace std;
 void drawScene(Camera camera);
 
 void glDrawRepere(float length);
+/* 1 pour se placer au mileu d'un axe, 0.5 pour les extremités de la pièce*/
+void glDrawQuad(float x, float y, float z, float largeur, float longueur, float hauteur);
 
 #endif
