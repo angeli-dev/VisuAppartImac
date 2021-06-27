@@ -19,13 +19,13 @@ void drawScene(Camera camera){
 	glEnable(GL_DEPTH_TEST);
     glEnable(GL_TEXTURE_2D);
 
-	/* PREMIERE PIECE - SEJOUR */
+	/* PREMIERE PIECE - RDC / SEJOUR */
 
-	/* dessin du sol */
+	/* Dessin du sol */
 	glColor3f(0.9 , 0.9, 1);
 	glDrawQuad(25, 25, 0.5, 50, 50, 1);
 
-	/* dessin des murs sans porte */
+	/* Dessin des murs sans porte */
 
 	//fenetres
 	glColor3f(0.7 , 0.7, 1);
@@ -34,7 +34,7 @@ void drawScene(Camera camera){
 	glColor3f(0.6 , 0.6, 1);
 	glDrawQuad(50, 25, 10, 1, 50, 20);
 
-	/* mur avec porte */
+	/* Murs avec porte */
 
 	//porte séjour-cuisine
 	glColor3f(0.8 , 0.8, 1);
@@ -43,17 +43,29 @@ void drawScene(Camera camera){
 	glDrawQuad(0.5, 35, 18, 1, 10, 4);
 	//porte séjour-entrée
 	glColor3f(0.5 , 0.5, 1);
-	glDrawQuad(5, 50, 10, 10, 1, 20);
-	glDrawQuad(35, 50, 10, 30, 1, 20);
-	glDrawQuad(15, 50, 18, 10, 1, 4);
+	glDrawQuad(2, 50, 10, 4, 1, 20);
+	glDrawQuad(32, 50, 10, 36, 1, 20);
+	glDrawQuad(9, 50, 18, 10, 1, 4);
 
-	/* DEUXIEME PIECE - CUISINE */
+	/* escalier */
+	glColor3f(0.4 , 0.4, 1);
+	glDrawQuad(5, 24, 2, 8, 2, 0.5);
+	glDrawQuad(5, 22, 4, 8, 2, 0.5);
+	glDrawQuad(5, 20, 6, 8, 2, 0.5);
+	glDrawQuad(5, 18, 8, 8, 2, 0.5);
+	glDrawQuad(5, 16, 10, 8, 2, 0.5);
+	glDrawQuad(5, 14, 12, 8, 2, 0.5);
+	glDrawQuad(5, 12, 14, 8, 2, 0.5);
+	glDrawQuad(5, 10, 16, 8, 2, 0.5);
+	glDrawQuad(5, 8, 18, 8, 2, 0.5);
 
-	/* dessin du sol */
+	/* DEUXIEME PIECE - RDC / CUISINE */
+
+	/* Dessin du sol */
 	glColor3f(1 , 0.9, 0.9);
 	glDrawQuad(-10, 25, 0.5, 20, 50, 1);
 
-	/* dessin des murs sans porte */
+	/* Dessin des murs sans porte */
 
 	//fenetre
 	glColor3f(1 , 0.8, 0.8);
@@ -65,8 +77,94 @@ void drawScene(Camera camera){
 	glColor3f(1 , 0.6, 0.6);
 	glDrawQuad(-10, 50, 10, 20, 1, 20);
 
-	/* TROISIEME PIECE - SALLE DE BAIN */
+	/* TROISIEME PIECE - ETAGE / CHAMBRE */
+	
+	/* Dessin du sol */
+	glColor3f(0.9 , 1, 0.9);
+	glDrawQuad(30, 35, 20.5, 40, 70, 1);
+	glDrawQuad(-10, 35, 20.5, 20, 70, 1);
+	glDrawQuad(5, 40, 20.5, 10, 60, 1);
 
+	/* Dessin des murs sans porte */
+
+	//exterieur gauche
+	glColor3f(0.7 , 1, 0.7);
+	glDrawQuad(50, 35, 30, 1, 70, 20); 
+	//exterieur droit
+	glColor3f(0.6 , 1, 0.6);
+	glDrawQuad(-20, 35, 30, 1, 70, 20);
+	//avant
+	glColor3f(0.5 , 1, 0.5);
+	glDrawQuad(15, 70, 30, 70, 1, 20);
+
+	/* Murs avec porte */
+
+	//porte balcon
+	glColor3f(0.8, 1, 0.8);
+	glDrawQuad(-2.5, 0.5, 30, 35, 1, 20); 
+	glDrawQuad(30, 0.5, 38, 30, 1, 4);
+	glDrawQuad(47.5, 0.5, 30, 5, 1, 20);
+
+	/* QUATRIEME PIECE - RDC / SDB */
+	
+	/* Dessin du sol */
+	glColor3f(1 , 0.9, 1);
+	glDrawQuad(35, 60, 0.5, 30, 20, 1);
+
+	/* Dessin des murs sans porte */
+
+	//exterieur droit
+	glColor3f(1 , 0.7, 1);
+	glDrawQuad(50, 60, 10, 1, 20, 20); 
+	//exterieur avant
+	glColor3f(1 , 0.6, 1);
+	glDrawQuad(35, 70, 10, 30, 1, 20);
+
+	/* Murs avec porte */
+
+	//porte sdb-entrée
+	glColor3f(1 , 0.8, 1);
+	glDrawQuad(20, 52.5, 10, 1, 5, 20); 
+	glDrawQuad(20, 60, 18, 1, 10, 4);
+	glDrawQuad(20, 67.5, 10, 1, 5, 20);
+
+	/* CINQIEME PIECE - RDC / ENTREE */
+	
+	/* Dessin du sol */
+	glColor3f(0.9, 1, 1);
+	glDrawQuad(0, 60, 0.5, 40, 20, 1);
+
+	/* Dessin des murs sans porte */
+
+	//exterieur gauche
+	glColor3f(0.7 , 1, 1);
+	glDrawQuad(-20, 60, 10, 1, 20, 20); 
+
+	/* Murs avec porte */
+
+	//porte entrée principale
+	glColor3f(0.8, 1, 1);
+	glDrawQuad(-17.5, 70, 10, 5, 1, 20); 
+	glDrawQuad(-10, 70, 18, 10, 1, 4);
+	glDrawQuad(7.5, 70, 10, 25, 1, 20);
+
+	/* BALCON */
+	
+	/* Dessin du sol */
+	glColor3f(1, 1, 0.9);
+	glDrawQuad(25, -5, 20.5, 40, 10, 1);
+
+	/* Dessin des murets */
+
+	//exterieur gauche
+	glColor3f(1, 1, 0.8);
+	glDrawQuad(45, -5, 25, 1, 10, 10);
+	//fond 
+	glColor3f(1, 1, 0.7);
+	glDrawQuad(25, -10, 25, 40, 1, 10);
+	//exterieur droit
+	glColor3f(1, 1, 0.6);
+	glDrawQuad(5, -5, 25, 1, 10, 10);
 
 	/* Fin du dessin */
 	glPopMatrix();
