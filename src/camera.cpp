@@ -60,7 +60,7 @@ Camera orienter(Camera cam, int xRel, int yRel)
     return cam;
 }
 
-Camera setPointcible(Camera cam, Vector3D pointCible){
+Camera setPointCible(Camera cam, Vector3D pointCible){
 
     // Calcul du vecteur orientation
     cam.orientation = subVectors(cam.pointCible, cam.position);
@@ -136,5 +136,75 @@ Camera setPosition(Camera cam, Vector3D position)
     // Actualisation du point ciblé
     cam.pointCible = addVectors(cam.position, cam.orientation);
 
+    return cam;
+}
+
+Camera visiteAuto (Camera cam){
+    cam=faireUnTour(cam);
+    if(cam.piece==2)
+    {
+        if(cam.i<5)
+        {
+            cam.position = addVectors(cam.position, multVector(cam.orientation, cam.vitesse));
+            cam.pointCible = addVectors(cam.position, cam.orientation);
+            cam.i++;
+        }
+    }
+    
+    return cam;
+}
+
+Camera faireUnTour(Camera cam){
+    int x=1;
+    int y=0;
+    if(cam.i < 360/cam.sensibilite)
+    {
+        cam = orienter(cam, x, y);
+        cam.i++;
+    }
+    return cam;
+}
+
+Camera inEntree(Camera cam){
+    cam.position=createVector(0, 60, 12);
+    cam.pointCible=createVector(70, 0, 12);
+    cam.piece=1;
+    cam.i=0;
+    return cam;
+}
+
+Camera inSdb(Camera cam){
+    cam.position=createVector(35, 60, 12);
+    cam.pointCible=createVector(0, 60, 12);
+    cam.piece=2;
+    cam.i=0;
+    return cam;
+}
+Camera inSejour(Camera cam){
+    cam.position=createVector(25, 25, 12);
+    cam.pointCible=createVector(0, 0, 12);
+    cam.piece=3;
+    cam.i=0;
+    return cam;
+}
+Camera inCuisine(Camera cam){
+    cam.position=createVector(-10, 25, 12);
+    cam.pointCible=createVector(0, 0, 12);
+    cam.piece=4;
+    cam.i=0;
+    return cam;
+}
+Camera inChambre(Camera cam){
+    cam.position=createVector(10, 35, 32);
+    cam.pointCible=createVector(0, 0, 32);
+    cam.piece=5;
+    cam.i=0;
+    return cam;
+}
+Camera inBalcon(Camera cam){
+    cam.position=createVector(25, -5, 32);
+    cam.pointCible=createVector(0, 0, 32);
+    cam.piece=6;
+    cam.i=0;
     return cam;
 }

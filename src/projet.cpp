@@ -62,7 +62,7 @@ int main(int argc, char** argv)
             return EXIT_FAILURE;
         }
     }
-    
+
     SDL_GLContext context;
     {
         SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 2);
@@ -92,12 +92,10 @@ int main(int argc, char** argv)
     maCamera.axeVertical=createVector(0, 0, 1);
     maCamera.sensibilite=0.5;
     maCamera.vitesse=0.5;
-    maCamera = setPointcible(maCamera, maCamera.pointCible);
+    //maCamera = setPointCible(maCamera, maCamera.pointCible);
 
     bool modePerso=false;
     bool modeAuto=false;
-    int x,y=0;
-
 
     /* Boucle principale */
     int loop = 1;
@@ -114,9 +112,9 @@ int main(int argc, char** argv)
         gluPerspective(70.0, (double) WINDOW_WIDTH/WINDOW_HEIGHT, 1.0, 200.0);
         if(modeAuto)
         {
-            x=1;
-            maCamera = orienter(maCamera, x, y);
+            maCamera=visiteAuto(maCamera);
         }
+        cout<<maCamera.theta<<endl;
 
         /* reinitialisation des buffers : couleur et ZBuffer */
 	    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
@@ -224,29 +222,23 @@ int main(int argc, char** argv)
                             maCamera.pointCible = addVectors(maCamera.position, maCamera.orientation);
                       
 			            break;
-                        case SDL_SCANCODE_Q :
-                              maCamera.position=createVector(0, 60, 12);
-                              maCamera.pointCible=createVector(0, 0, 12);
+                        case SDL_SCANCODE_KP_1 :
+                              maCamera=inEntree(maCamera);
                         break;
-                        case SDL_SCANCODE_B :
-                              maCamera.position=createVector(35, 60, 12);
-                              maCamera.pointCible=createVector(0, 0, 12);
+                        case SDL_SCANCODE_KP_2 :
+                              maCamera=inSdb(maCamera);
                         break;
-                        case SDL_SCANCODE_C :
-                              maCamera.position=createVector(25, 25, 12);
-                              maCamera.pointCible=createVector(0, 0, 12);
+                        case SDL_SCANCODE_KP_3 :
+                              maCamera=inSejour(maCamera);
                         break;
-                        case SDL_SCANCODE_D :
-                              maCamera.position=createVector(-10, 25, 12);
-                              maCamera.pointCible=createVector(0, 0, 12);
+                        case SDL_SCANCODE_KP_4 :
+                              maCamera=inCuisine(maCamera);
                         break;
-                        case SDL_SCANCODE_E :
-                              maCamera.position=createVector(10, 35, 32);
-                              maCamera.pointCible=createVector(0, 0, 32);
+                        case SDL_SCANCODE_KP_5 :
+                              maCamera=inChambre(maCamera);
                         break;
-                         case SDL_SCANCODE_F :
-                              maCamera.position=createVector(25, -5, 32);
-                              maCamera.pointCible=createVector(0, 0, 32);
+                         case SDL_SCANCODE_KP_6 :
+                              maCamera=inBalcon(maCamera);
                         break;
                        
                         
