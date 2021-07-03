@@ -95,6 +95,8 @@ int main(int argc, char** argv)
     maCamera = setPointcible(maCamera, maCamera.pointCible);
 
     bool modePerso=false;
+    bool modeAuto=false;
+    int x,y=0;
 
 
     /* Boucle principale */
@@ -110,6 +112,11 @@ int main(int argc, char** argv)
 
 	    /* définition de la camera */
         gluPerspective(70.0, (double) WINDOW_WIDTH/WINDOW_HEIGHT, 1.0, 200.0);
+        if(modeAuto)
+        {
+            x=1;
+            maCamera = orienter(maCamera, x, y);
+        }
 
         /* reinitialisation des buffers : couleur et ZBuffer */
 	    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
@@ -157,7 +164,6 @@ int main(int argc, char** argv)
                 /* Mouvement souris */
                case SDL_MOUSEMOTION:
                     maCamera = orienter(maCamera, e.motion.xrel, e.motion.yrel);
-
                     break;
                 
                 /* Touche clavier */
@@ -169,7 +175,19 @@ int main(int argc, char** argv)
                         {
                             loop = 0;
                             break;
-                        }    
+                        }  
+                        case SDL_SCANCODE_RETURN :
+                        {
+                             if(modeAuto==true){                      
+                                modeAuto=false;
+                                cout<<"Caméra libre"<<endl;
+                            }
+                            else{                      
+                                modeAuto=true;
+                                cout<<"Caméra automatique"<<endl;
+                            }
+                            break;
+                        }  
                         // Avancée de la caméra
                         case SDL_SCANCODE_UP :
                             if(modePerso==true){
@@ -206,18 +224,32 @@ int main(int argc, char** argv)
                             maCamera.pointCible = addVectors(maCamera.position, maCamera.orientation);
                       
 			            break;
-                          case SDL_SCANCODE_Z :
-                            maCamera = orienter(maCamera, 1, 0);
-                        break;
-                        case SDL_SCANCODE_S :
-                            maCamera = orienter(maCamera, -1, 0);
-                        break;
                         case SDL_SCANCODE_Q :
-                            maCamera = orienter(maCamera, 0, 1);
+                              maCamera.position=createVector(0, 60, 12);
+                              maCamera.pointCible=createVector(0, 0, 12);
+                        break;
+                        case SDL_SCANCODE_B :
+                              maCamera.position=createVector(35, 60, 12);
+                              maCamera.pointCible=createVector(0, 0, 12);
+                        break;
+                        case SDL_SCANCODE_C :
+                              maCamera.position=createVector(25, 25, 12);
+                              maCamera.pointCible=createVector(0, 0, 12);
                         break;
                         case SDL_SCANCODE_D :
-                            maCamera = orienter(maCamera, 0, -1);
+                              maCamera.position=createVector(-10, 25, 12);
+                              maCamera.pointCible=createVector(0, 0, 12);
                         break;
+                        case SDL_SCANCODE_E :
+                              maCamera.position=createVector(10, 35, 32);
+                              maCamera.pointCible=createVector(0, 0, 32);
+                        break;
+                         case SDL_SCANCODE_F :
+                              maCamera.position=createVector(25, -5, 32);
+                              maCamera.pointCible=createVector(0, 0, 32);
+                        break;
+                       
+                        
                         default:
                             break;
                     }
