@@ -140,34 +140,65 @@ Camera setPosition(Camera cam, Vector3D position)
 }
 
 Camera visiteAuto (Camera cam){
-    cam=faireUnTour(cam);
-    if(cam.piece==2)
+    if(cam.compteur<50)
     {
-        if(cam.i<5)
-        {
-            cam.position = addVectors(cam.position, multVector(cam.orientation, cam.vitesse));
-            cam.pointCible = addVectors(cam.position, cam.orientation);
-            cam.i++;
-        }
+        cam.position=createVector(-10, 100, 12);
+        cam.pointCible=createVector(-10, 0, 12);
+        cam=setPointCible(cam, cam.pointCible);
+        cam.compteur++;
     }
-    
+    if(cam.compteur>=50 && cam.compteur<100){
+        cam=deplacementAvant(cam);
+        cam.compteur++;
+    }/*
+    if(cam.compteur>0 && cam.compteur<2/cam.vitesse){
+        cam=inEntree(cam);
+        cam.compteur++;
+    }
+    if(cam.compteur>=2/cam.vitesse && cam.compteur<360/cam.sensibilite)
+    {
+        cam=OrienterGauche(cam);
+        cam.compteur++;
+    }*/
     return cam;
 }
 
-Camera faireUnTour(Camera cam){
-    int x=1;
-    int y=0;
-    if(cam.i < 360/cam.sensibilite)
-    {
-        cam = orienter(cam, x, y);
-        cam.i++;
-    }
+Camera OrienterGauche(Camera cam){
+    cam = orienter(cam, 1, 0);
     return cam;
+}
+
+Camera deplacementAvant(Camera cam){
+    cam.position = addVectors(cam.position, multVector(cam.orientation, cam.vitesse));
+    cam.pointCible = addVectors(cam.position, cam.orientation);  
+    return cam;             
+}
+
+Camera deplacementArriere(Camera cam){
+    cam.position = subVectors(cam.position, multVector(cam.orientation, cam.vitesse));
+    cam.pointCible = addVectors(cam.position, cam.orientation);           
+    return cam;             
+}
+
+Camera deplacementGauche(Camera cam){
+    cam.position = addVectors(cam.position, multVector(cam.deplacementLateral, cam.vitesse));
+    cam.pointCible = addVectors(cam.position, cam.orientation);                          
+    return cam;             
+}
+
+Camera deplacementDroite(Camera cam){
+    cam.position = subVectors(cam.position, multVector(cam.deplacementLateral, cam.vitesse));
+    cam.pointCible = addVectors(cam.position, cam.orientation);                                 
+    return cam;             
 }
 
 Camera inEntree(Camera cam){
+    //cam = setPosition(cam, createVector(0, 60, 12));
+    //cam = setPointCible(cam, createVector(70, 0, 12)); 
+   
     cam.position=createVector(0, 60, 12);
     cam.pointCible=createVector(70, 0, 12);
+   
     cam.piece=1;
     cam.i=0;
     return cam;
