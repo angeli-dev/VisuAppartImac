@@ -9,7 +9,7 @@ Camera orienter(Camera cam, int xRel, int yRel)
      // Limitation de l'angle phi
     if(cam.phi > 89.0)
         cam.phi = 89.0;
-    else if(cam.phi < -89.0)
+    if(cam.phi < -89.0)
         cam.phi = -89.0;
 
      // Conversion des angles en radian
@@ -85,7 +85,9 @@ Camera setPointCible(Camera cam, Vector3D pointCible){
         cam.theta = acos(cam.orientation.z / cos(cam.phi));
 
         if(cam.orientation.z < 0)
+        {
             cam.theta *= -1;
+        }
     }
 
     // Sinon c'est l'axe Z
@@ -96,7 +98,9 @@ Camera setPointCible(Camera cam, Vector3D pointCible){
         cam.theta = acos(cam.orientation.z / cos(cam.phi));
 
         if(cam.orientation.z < 0)
+        {
             cam.theta *= -1;
+        }
     }
 
     // Conversion en degrés
@@ -115,11 +119,10 @@ Camera setPosition(Camera cam, Vector3D position)
         // Calcul des coordonnées sphériques
         cam.position_2D.x = cam.position.y;
         cam.position_2D.y = cam.position.z;
-        
     }
 
     // Si c'est l'axe Y
-    else if(cam.axeVertical.y == 1.0)
+    if(cam.axeVertical.y == 1.0)
     {
          // Calcul des coordonnées sphériques
         cam.position_2D.x = cam.position.x;
@@ -127,7 +130,7 @@ Camera setPosition(Camera cam, Vector3D position)
     }
 
     // Sinon c'est l'axe Z
-    else
+    if(cam.axeVertical.z == 1.0)
     {
          // Calcul des coordonnées sphériques
         cam.position_2D.x = cam.position.x;
@@ -143,34 +146,47 @@ Camera visiteAuto (Camera cam){
     if(cam.compteur<50)
     {
         cam.position=createVector(-10, 100, 12);
+        
         cam.pointCible=createVector(-10, 0, 12);
         cam=setPointCible(cam, cam.pointCible);
+        //cam=setPosition(cam, cam.position);
         cam.compteur++;
     }
-    if(cam.compteur>=50 && cam.compteur<100){
+    if(cam.compteur>=50 && cam.compteur<110){
         cam=deplacementAvant(cam);
+ 
         cam.compteur++;
-    }/*
-    if(cam.compteur>0 && cam.compteur<2/cam.vitesse){
-        cam=inEntree(cam);
+ 
+    }
+    
+    if(cam.compteur>=110 && cam.compteur<111)
+    {
+        cam=OrienterDroite(cam);
         cam.compteur++;
     }
-    if(cam.compteur>=2/cam.vitesse && cam.compteur<360/cam.sensibilite)
-    {
-        cam=OrienterGauche(cam);
-        cam.compteur++;
-    }*/
     return cam;
 }
 
 Camera OrienterGauche(Camera cam){
-    cam = orienter(cam, 1, 0);
+    cam = orienter(cam, 0.5, 0);
+    cam=setPointCible(cam, cam.pointCible);  
+    cam=setPosition(cam, cam.position);
+    return cam;
+}
+
+Camera OrienterDroite(Camera cam){
+    cam = orienter(cam, -2, 0);
+    /*cam=setPointCible(cam, cam.pointCible);  
+    cam=setPosition(cam, cam.position);*/
     return cam;
 }
 
 Camera deplacementAvant(Camera cam){
     cam.position = addVectors(cam.position, multVector(cam.orientation, cam.vitesse));
+    
     cam.pointCible = addVectors(cam.position, cam.orientation);  
+    /*cam=setPointCible(cam, cam.pointCible);  
+    cam=setPosition(cam, cam.position);*/
     return cam;             
 }
 

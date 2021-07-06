@@ -88,12 +88,13 @@ int main(int argc, char** argv)
     // Caméra mobile
     Camera maCamera;
     maCamera.position=createVector(30, 100, 60);
+    //maCamera=setPosition(maCamera, maCamera.position);
     maCamera.pointCible=createVector(30, 0, 0);
     maCamera.axeVertical=createVector(0, 0, 1);
     maCamera.sensibilite=0.5;
     maCamera.vitesse=0.5;
     maCamera = setPointCible(maCamera, maCamera.pointCible);
-
+   
     bool modePerso=false;
     bool modeAuto=false;
 
@@ -161,6 +162,7 @@ int main(int argc, char** argv)
                 /* Mouvement souris */
                case SDL_MOUSEMOTION:
                     maCamera = orienter(maCamera, e.motion.xrel, e.motion.yrel);
+                    cout<<e.motion.xrel<<endl;
                     break;
                 
                 /* Touche clavier */

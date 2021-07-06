@@ -38,6 +38,7 @@ Camera setPointCible(Camera cam, Vector3D pointCible);
 Camera setPosition(Camera cam, Vector3D position);
 Camera visiteAuto (Camera cam);
 Camera OrienterGauche (Camera cam);
+Camera OrienterDroite (Camera cam);
 Camera deplacementArriere(Camera cam);
 Camera deplacementAvant(Camera cam);
 Camera deplacementDroite(Camera cam);
