@@ -5,20 +5,20 @@ Angélique Lebas - 2021
 ## Mode d'emploi
 
 __Caméra__
-- **"Entrée"** : visite automatique de l'appartement / visite libre (par defaut la visite est libre)
+- **touche "Entrée"** : visite automatique de l'appartement / visite libre (par defaut la visite est libre)
 - **clic molette** : caméra à hauteur humaine
 - **déplacement de la souris** : orientation de la caméra
 - **flèches du clavier** : déplacement de la caméra
 
 __Positions__
-- **1** : Entrée
-- **2** : Salle de bain
-- **3** : Séjour
-- **4** : Cuisine
-- **5** : Chambre
-- **6** : Balcon
+- **touche "1"** : Entrée
+- **touche "2"** : Salle de bain
+- **touche "3"** : Séjour
+- **touche "4"** : Cuisine
+- **touche "5"** : Chambre
+- **touche "6"** : Balcon
 
 __Compilation__ 
-- **make clean** : nettoyer le dossier
-- **make projet** : compiler
-- **./bin/projet.out** : exécuter
+- **commande "make clean"** : nettoyer le dossier
+- **commande "make projet"** : compiler
+- **commande "./bin/projet.out"** : exécuter
