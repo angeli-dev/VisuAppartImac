@@ -9,9 +9,9 @@ __Installation__
 1. télécharger le dossier
 2. Se placer à la racine du dossier
 3. Compiler et exécuter: 
-- **commande "make clean"** : nettoyer le dossier
-- **commande "make projet"** : compiler
-- **commande "./bin/projet.out"** : exécuter
+* **commande "make clean"** : nettoyer le dossier
+* **commande "make projet"** : compiler
+* **commande "./bin/projet.out"** : exécuter
 
 __Caméra__
 - **touche "Entrée"** : visite automatique de l'appartement / visite libre (par defaut la visite est libre)
