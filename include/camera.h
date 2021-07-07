@@ -1,7 +1,8 @@
 #include <stdlib.h>
 #include <math.h>
 #include <stdio.h>
-
+#include <iostream>
+using namespace std;
 #ifndef CAMERA_H
 #define CAMERA_H
 
@@ -21,8 +22,8 @@ typedef struct Camera
     Vector3D position;
     Vector3D pointCible;
 
-    float sensibilite=0.0;
-    float vitesse=0.0;
+    float sensibilite;
+    float vitesse;
 
     point position_2D;
     point orientation_2D;

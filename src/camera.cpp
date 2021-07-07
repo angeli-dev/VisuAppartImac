@@ -29,7 +29,7 @@ Camera orienter(Camera cam, int xRel, int yRel)
     }
 
     // Si c'est l'axe Y
-    else if(cam.axeVertical.y == 1.0)
+    if(cam.axeVertical.y == 1.0)
     {
          // Calcul des coordonnées sphériques
         cam.orientation.x = cos(phiRadian) * sin(thetaRadian);
@@ -40,7 +40,7 @@ Camera orienter(Camera cam, int xRel, int yRel)
     }
 
     // Sinon c'est l'axe Z
-    else
+    if(cam.axeVertical.z == 1.0)
     {
          // Calcul des coordonnées sphériques
         cam.orientation.x = cos(phiRadian) * cos(thetaRadian);
@@ -145,21 +145,67 @@ Camera setPosition(Camera cam, Vector3D position)
 Camera visiteAuto (Camera cam){
     if(cam.compteur<50)
     {
-        cam.position=createVector(-10, 100, 12);
-        
+        cam.position=createVector(-10, 100, 12);       
         cam.pointCible=createVector(-10, 0, 12);
         cam=setPointCible(cam, cam.pointCible);
-        //cam=setPosition(cam, cam.position);
         cam.compteur++;
     }
-    if(cam.compteur>=50 && cam.compteur<110){
+    if(cam.compteur>=50 && cam.compteur<190){
         cam=deplacementAvant(cam);
- 
         cam.compteur++;
- 
+    }
+    if(cam.compteur==190)
+    {
+        cam.position=createVector(-10, 65, 12);  
+        cam.pointCible=createVector(-10, 0, 12);
+        cam=setPointCible(cam, cam.pointCible);
+        cam.compteur++;
+    }
+    if(cam.compteur>190 && cam.compteur<390)
+    {
+        cam=OrienterGauche(cam);
+        cam.compteur++;
+    }
+    if(cam.compteur>=390 && cam.compteur<570)
+    {
+        cam=deplacementAvant(cam);
+        cam.compteur++;
+    }
+    if(cam.compteur>=570 && cam.compteur<930)
+    {
+        cam=OrienterDroite(cam);
+        /*cout<<cam.pointCible.x<<endl;
+        cout<<cam.pointCible.y<<endl;
+        cout<<cam.pointCible.z<<endl;*/
+        cam.compteur++;
+    }
+    if(cam.compteur>=930 && cam.compteur<1030)
+    {
+        cam=deplacementAvant(cam);
+        cam.compteur++;
+    }
+    if(cam.compteur>=1030 && cam.compteur<1235)
+    {
+        cam=OrienterDroite(cam);
+        cam.compteur++;
+    }
+    if(cam.compteur>=1235 && cam.compteur<1600)
+    {
+        cam=deplacementAvant(cam);
+        cam.compteur++;
+    }
+    if(cam.compteur>=1300 && cam.compteur<1900)
+    {
+        cam=OrienterDroite(cam);
+        cam.compteur++;
+    }
+    if(cam.compteur>=1900 && cam.compteur<2120)
+    {
+        cam=deplacementAvant(cam);
+        cam.compteur++;
     }
     
-    if(cam.compteur>=110 && cam.compteur<111)
+     if(cam.compteur>=1920 && cam.compteur<2050)
     {
         cam=OrienterDroite(cam);
         cam.compteur++;
@@ -168,25 +214,18 @@ Camera visiteAuto (Camera cam){
 }
 
 Camera OrienterGauche(Camera cam){
-    cam = orienter(cam, 0.5, 0);
-    cam=setPointCible(cam, cam.pointCible);  
-    cam=setPosition(cam, cam.position);
+    cam = orienter(cam, 1, 0);
     return cam;
 }
 
 Camera OrienterDroite(Camera cam){
-    cam = orienter(cam, -2, 0);
-    /*cam=setPointCible(cam, cam.pointCible);  
-    cam=setPosition(cam, cam.position);*/
+    cam = orienter(cam, -1, 0);  
     return cam;
 }
 
 Camera deplacementAvant(Camera cam){
     cam.position = addVectors(cam.position, multVector(cam.orientation, cam.vitesse));
-    
-    cam.pointCible = addVectors(cam.position, cam.orientation);  
-    /*cam=setPointCible(cam, cam.pointCible);  
-    cam=setPosition(cam, cam.position);*/
+    cam.pointCible = addVectors(cam.position, cam.orientation);
     return cam;             
 }
 

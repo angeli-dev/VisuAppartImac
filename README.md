@@ -7,7 +7,7 @@ _Angélique Lebas - 2021_
 
 __Installation__
 1. Télécharger le dossier
-2. Se placer à la racine du dossier
+2. Ouvrir un terminal et se placer à la racine du dossier
 3. Compiler et exécuter: 
     * **commande "make clean"** : nettoyer le dossier
     * **commande "make projet"** : compiler
