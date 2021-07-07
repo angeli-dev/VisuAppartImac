@@ -1,5 +1,6 @@
 # VisuApartImac
 Projet de Synthèse d'Images, IMAC S2 
+
 _Angélique Lebas - 2021_
 
 ## Mode d'emploi
