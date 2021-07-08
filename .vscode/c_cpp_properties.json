@@ -4,7 +4,8 @@
             "name": "Linux",
             "includePath": [
                 "${workspaceFolder}/**",
-                "/usr/include/SDL"
+                "/usr/include/SDL",
+                "/home/angelique/Documents/VisuTerrImac-main/include"
             ],
             "defines": [],
             "compilerPath": "/usr/bin/gcc",

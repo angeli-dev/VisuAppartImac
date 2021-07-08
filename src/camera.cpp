@@ -174,9 +174,6 @@ Camera visiteAuto (Camera cam){
     if(cam.compteur>=570 && cam.compteur<930)
     {
         cam=OrienterDroite(cam);
-        /*cout<<cam.pointCible.x<<endl;
-        cout<<cam.pointCible.y<<endl;
-        cout<<cam.pointCible.z<<endl;*/
         cam.compteur++;
     }
     if(cam.compteur>=930 && cam.compteur<1030)
@@ -199,15 +196,54 @@ Camera visiteAuto (Camera cam){
         cam=OrienterDroite(cam);
         cam.compteur++;
     }
-    if(cam.compteur>=1900 && cam.compteur<2120)
+    if(cam.compteur>=1900 && cam.compteur<2130)
     {
         cam=deplacementAvant(cam);
         cam.compteur++;
     }
-    
-     if(cam.compteur>=1920 && cam.compteur<2050)
+    if(cam.compteur>=1930 && cam.compteur<2050)
     {
         cam=OrienterDroite(cam);
+        cam.compteur++;
+    }
+    if(cam.compteur>=2130 && cam.compteur<2300)
+    {
+        cam=OrienterDroite(cam);
+        cam.compteur++;
+    }
+    if(cam.compteur>=2300 && cam.compteur<2400)
+    {
+        cam=deplacementAvant(cam);
+        cam.compteur++;
+    }
+    if(cam.compteur>=2400 && cam.compteur<2800)
+    {
+        cam=OrienterDroite(cam);
+        cam.compteur++;
+    }
+    if(cam.compteur>=2800 && cam.compteur<2900)
+    {
+        cam=deplacementAvant(cam);
+        cam.compteur++;
+    }
+    if(cam.compteur>=2900 && cam.compteur<3100)
+    {
+        cam=OrienterGauche(cam);
+        cam.compteur++;
+    }
+    if(cam.compteur>=3100 && cam.compteur<3180)
+    {
+        cam=deplacementAvant(cam);
+        cam.compteur++;
+    }
+    if(cam.compteur>=3180 && cam.compteur<3350)
+    {
+        cam=OrienterGauche(cam);
+        cam.compteur++;
+    }
+    if(cam.compteur>=3350 && cam.compteur<3360)
+    {
+        cam=deplacementMonter(cam);
         cam.compteur++;
     }
     return cam;
@@ -247,13 +283,22 @@ Camera deplacementDroite(Camera cam){
     return cam;             
 }
 
+Camera deplacementMonter(Camera cam){
+    cam.position = addVectors(cam.position, multVector(cam.axeVertical, cam.vitesse));
+    cam.pointCible = addVectors(cam.position, cam.orientation);
+    return cam;           
+}
+
+Camera deplacementDescendre(Camera cam){
+    cam.position = subVectors(cam.position, multVector(cam.axeVertical, cam.vitesse));
+    cam.pointCible = addVectors(cam.position, cam.orientation);                                 
+    return cam;             
+}
+
+
 Camera inEntree(Camera cam){
-    //cam = setPosition(cam, createVector(0, 60, 12));
-    //cam = setPointCible(cam, createVector(70, 0, 12)); 
-   
     cam.position=createVector(0, 60, 12);
     cam.pointCible=createVector(70, 0, 12);
-   
     cam.piece=1;
     cam.i=0;
     return cam;

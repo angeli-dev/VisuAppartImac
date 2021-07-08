@@ -83,7 +83,7 @@ void drawScene(Camera camera){
 	glColor3f(0.9 , 1, 0.9);
 	glDrawQuad(30, 35, 20.5, 40, 70, 1);
 	glDrawQuad(-10, 35, 20.5, 20, 70, 1);
-	glDrawQuad(5, 40, 20.5, 10, 60, 1);
+	glDrawQuad(5, 47.5, 20.5, 10, 45, 1);
 
 	/* Dessin des murs sans porte */
 

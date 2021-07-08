@@ -166,7 +166,6 @@ int main(int argc, char** argv)
                 
                 /* Touche clavier */
                case SDL_KEYDOWN:
-                    cout<<e.key.keysym.scancode<<endl;
                     switch(e.key.keysym.scancode) 
                     {   
                         case SDL_SCANCODE_ESCAPE :
@@ -193,48 +192,52 @@ int main(int argc, char** argv)
                                 maCamera.position = createVector(maCamera.position.x, maCamera.position.y, 12);
                             }
                             maCamera=deplacementAvant(maCamera);
-			            break;
+			                break;
                         // Recul de la caméra
 		                case SDL_SCANCODE_DOWN :
                             if(modePerso==true){
                                 maCamera.position = createVector(maCamera.position.x, maCamera.position.y, 12);
                             }
 			                maCamera=deplacementArriere(maCamera);
-			            break;
+			                break;
                         // Déplacement vers la gauche
 		                case SDL_SCANCODE_LEFT :
                             if(modePerso==true){
                                 maCamera.position = createVector(maCamera.position.x, maCamera.position.y, 12);
                             }
 			                maCamera=deplacementGauche(maCamera);
-			            break;
+			                break;
                         // Déplacement vers la droite
 		                case SDL_SCANCODE_RIGHT :
                             if(modePerso==true){
                                 maCamera.position = createVector(maCamera.position.x, maCamera.position.y, 12);
                             }
 			                maCamera=deplacementDroite(maCamera);
-			            break;
+			                break;
+                        case SDL_SCANCODE_PAGEUP :
+			                maCamera=deplacementMonter(maCamera);
+			                break;
+                        case SDL_SCANCODE_PAGEDOWN :
+			                maCamera=deplacementDescendre(maCamera);
+			                break;
                         case SDL_SCANCODE_KP_1 :
                               maCamera=inEntree(maCamera);
-                        break;
+                            break;
                         case SDL_SCANCODE_KP_2 :
                               maCamera=inSdb(maCamera);
-                        break;
+                            break;
                         case SDL_SCANCODE_KP_3 :
                               maCamera=inSejour(maCamera);
-                        break;
+                            break;
                         case SDL_SCANCODE_KP_4 :
                               maCamera=inCuisine(maCamera);
-                        break;
+                            break;
                         case SDL_SCANCODE_KP_5 :
                               maCamera=inChambre(maCamera);
-                        break;
-                         case SDL_SCANCODE_KP_6 :
+                            break;
+                        case SDL_SCANCODE_KP_6 :
                               maCamera=inBalcon(maCamera);
-                        break;
-                       
-                        
+                            break;                      
                         default:
                             break;
                     }

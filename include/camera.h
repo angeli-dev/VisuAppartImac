@@ -44,6 +44,8 @@ Camera deplacementArriere(Camera cam);
 Camera deplacementAvant(Camera cam);
 Camera deplacementDroite(Camera cam);
 Camera deplacementGauche(Camera cam);
+Camera deplacementMonter(Camera cam);
+Camera deplacementDescendre(Camera cam);
 Camera inEntree(Camera cam);
 Camera inSdb(Camera cam);
 Camera inSejour(Camera cam);
