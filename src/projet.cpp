@@ -146,9 +146,11 @@ int main(int argc, char** argv)
             /* Quelques exemples de traitement d'evenements : */
             switch(e.type) 
             {
-                /* Clic souris*/
+                /* Clics souris*/
                 case SDL_MOUSEBUTTONUP: 
-                    switch(e.button.button) 
+                    maCamera=setPointCible(maCamera, maCamera.pointCible);
+                    switch(e.button.button)
+                    {
                         case SDL_BUTTON_LEFT:
                             if(modeRDC==true){                      
                                 modeRDC=false;
@@ -156,9 +158,10 @@ int main(int argc, char** argv)
                             }
                             else{                      
                                 modeRDC=true;
+                                modeEtage=false;
                                 cout<<"Caméra au rez-de-chaussez"<<endl;
                             }
-                        break;
+                            break;
                         case SDL_BUTTON_RIGHT:
                             if(modeEtage==true){                      
                                 modeEtage=false;
@@ -166,21 +169,23 @@ int main(int argc, char** argv)
                             }
                             else{                      
                                 modeEtage=true;
+                                modeRDC=false;
                                 cout<<"Caméra à l'étage"<<endl;
                             }
-                        break;
+                            break;
                         case SDL_BUTTON_MIDDLE:
                             maCamera.i=0;
-                        break;
-                default:
-                     break;
+                            break;
+                        default:
+                            break;
+                    }
 
-                /* Mouvement souris */
+                /* Mouvements souris */
                case SDL_MOUSEMOTION:
                     maCamera = orienter(maCamera, e.motion.xrel, e.motion.yrel);
                     break;
                 
-                /* Touche clavier */
+                /* Touches clavier */
                case SDL_KEYDOWN:
                     switch(e.key.keysym.scancode) 
                     {   
@@ -266,16 +271,16 @@ int main(int argc, char** argv)
                         case SDL_SCANCODE_KP_6 :
                             maCamera=inBalcon(maCamera);
                             break;
-                        case SDL_SCANCODE_Z :
+                        case 26 : //z
                             maCamera=OrienterHaut(maCamera);
                             break;
-                        case SDL_SCANCODE_Q :
+                        case 4 : //q
                             maCamera=OrienterGauche(maCamera);
                             break;
-                        case SDL_SCANCODE_S :
+                        case 22 : //s
                             maCamera=OrienterBas(maCamera);
                             break;
-                        case SDL_SCANCODE_D :
+                        case 7 : //d
                             maCamera=OrienterDroite(maCamera);
                             break;               
                         default:
