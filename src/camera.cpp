@@ -143,6 +143,7 @@ Camera setPosition(Camera cam, Vector3D position)
 }
 
 Camera visiteAuto (Camera cam){
+    /* début */
     if(cam.compteur<50)
     {
         cam.position=createVector(-10, 100, 12);       
@@ -154,6 +155,7 @@ Camera visiteAuto (Camera cam){
         cam=deplacementAvant(cam);
         cam.compteur++;
     }
+    /* entrée */
     if(cam.compteur==190)
     {
         cam.position=createVector(-10, 65, 12);  
@@ -171,6 +173,7 @@ Camera visiteAuto (Camera cam){
         cam=deplacementAvant(cam);
         cam.compteur++;
     }
+    /* sale de bain */
     if(cam.compteur>=570 && cam.compteur<930)
     {
         cam=OrienterDroite(cam);
@@ -181,6 +184,7 @@ Camera visiteAuto (Camera cam){
         cam=deplacementAvant(cam);
         cam.compteur++;
     }
+    /* séjour */
     if(cam.compteur>=1030 && cam.compteur<1235)
     {
         cam=OrienterDroite(cam);
@@ -216,6 +220,7 @@ Camera visiteAuto (Camera cam){
         cam=deplacementAvant(cam);
         cam.compteur++;
     }
+    /* cuisine */
     if(cam.compteur>=2400 && cam.compteur<2800)
     {
         cam=OrienterDroite(cam);
@@ -241,9 +246,97 @@ Camera visiteAuto (Camera cam){
         cam=OrienterGauche(cam);
         cam.compteur++;
     }
-    if(cam.compteur>=3350 && cam.compteur<3360)
+    /* escalier */
+    //1
+    if(cam.compteur>=3350 && cam.compteur<3355)
     {
+        cam=deplacementAvant(cam);
         cam=deplacementMonter(cam);
+        cam.compteur++;
+    }
+    if(cam.compteur>=3355 && cam.compteur<3375)
+    {
+        cam.compteur++;
+    }
+    //2
+    if(cam.compteur>=3375 && cam.compteur<3380)
+    {
+        cam=deplacementAvant(cam);
+        cam=deplacementMonter(cam);
+        cam.compteur++;
+    }
+    if(cam.compteur>=3380 && cam.compteur<3390)
+    {
+        cam.compteur++;
+    }
+    //3
+    if(cam.compteur>=3390 && cam.compteur<3495)
+    {
+        cam=deplacementAvant(cam);
+        cam=deplacementMonter(cam);
+        cam.compteur++;
+    }
+    if(cam.compteur>=3395 && cam.compteur<3405)
+    {
+        cam.compteur++;
+    }
+    //4
+    if(cam.compteur>=3405 && cam.compteur<3410)
+    {
+        cam=deplacementAvant(cam);
+        cam=deplacementMonter(cam);
+        cam.compteur++;
+    }
+    if(cam.compteur>=3415 && cam.compteur<3425)
+    {
+        cam.compteur++;
+    }
+    //5
+    if(cam.compteur>=3425 && cam.compteur<3430)
+    {
+        cam=deplacementAvant(cam);
+        cam=deplacementMonter(cam);
+        cam.compteur++;
+    }
+    if(cam.compteur>=3430 && cam.compteur<3440)
+    {
+        cam.compteur++;
+    }
+    /* étage */
+    if(cam.compteur>=3440 && cam.compteur<3445)
+    {
+        cam=OrienterDroite(cam);
+        cam=deplacementMonter(cam);
+        cam.compteur++;
+    }
+    if(cam.compteur>=3440 && cam.compteur<3800)
+    {
+        cam=OrienterDroite(cam);
+        cam.compteur++;
+    }
+    if(cam.compteur>=3800 && cam.compteur<3950)
+    {
+        cam=deplacementAvant(cam);
+        cam.compteur++;
+    }
+    if(cam.compteur>=3950 && cam.compteur<4370)
+    {
+        cam=OrienterDroite(cam);
+        cam.compteur++;
+    }
+    if(cam.compteur>=4350 && cam.compteur<4600)
+    {
+        cam=deplacementAvant(cam);
+        cam.compteur++;
+    }
+    if(cam.compteur>=4600 && cam.compteur<4800)
+    {
+        cam=OrienterDroite(cam);
+        cam.compteur++;
+    }
+    if(cam.compteur>=4700 && cam.compteur<5500)
+    {
+        cam=OrienterGauche(cam);
         cam.compteur++;
     }
     return cam;
