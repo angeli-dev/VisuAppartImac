@@ -94,8 +94,10 @@ int main(int argc, char** argv)
     maCamera=setPosition(maCamera, maCamera.position);
     maCamera.pointCible=createVector(30, 0, 0);
     maCamera = setPointCible(maCamera, maCamera.pointCible);
+    maCamera.i=360/maCamera.sensibilite;
     
-    bool modePerso=false;
+    bool modeRDC=false;
+    bool modeEtage=false;
     bool modeAuto=false;
 
     /* Boucle principale */
@@ -115,6 +117,7 @@ int main(int argc, char** argv)
         {
             maCamera=visiteAuto(maCamera);
         }
+        maCamera=faireUnTour(maCamera);
 
         /* reinitialisation des buffers : couleur et ZBuffer */
 	    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
@@ -146,15 +149,28 @@ int main(int argc, char** argv)
                 /* Clic souris*/
                 case SDL_MOUSEBUTTONUP: 
                     switch(e.button.button) 
-                        case SDL_BUTTON_MIDDLE:
-                            if(modePerso==true){                      
-                                modePerso=false;
+                        case SDL_BUTTON_LEFT:
+                            if(modeRDC==true){                      
+                                modeRDC=false;
                                 cout<<"Caméra freefly"<<endl;
                             }
                             else{                      
-                                modePerso=true;
-                                cout<<"Caméra à hauteur fixe"<<endl;
+                                modeRDC=true;
+                                cout<<"Caméra au rez-de-chaussez"<<endl;
                             }
+                        break;
+                        case SDL_BUTTON_RIGHT:
+                            if(modeEtage==true){                      
+                                modeEtage=false;
+                                cout<<"Caméra freefly"<<endl;
+                            }
+                            else{                      
+                                modeEtage=true;
+                                cout<<"Caméra à l'étage"<<endl;
+                            }
+                        break;
+                        case SDL_BUTTON_MIDDLE:
+                            maCamera.i=0;
                         break;
                 default:
                      break;
@@ -188,56 +204,80 @@ int main(int argc, char** argv)
                         }  
                         // Avancée de la caméra
                         case SDL_SCANCODE_UP :
-                            if(modePerso==true){
+                            if(modeRDC==true){
                                 maCamera.position = createVector(maCamera.position.x, maCamera.position.y, 12);
+                            }
+                            if(modeEtage==true){
+                                maCamera.position = createVector(maCamera.position.x, maCamera.position.y, 32);
                             }
                             maCamera=deplacementAvant(maCamera);
 			                break;
                         // Recul de la caméra
 		                case SDL_SCANCODE_DOWN :
-                            if(modePerso==true){
+                            if(modeRDC==true){
                                 maCamera.position = createVector(maCamera.position.x, maCamera.position.y, 12);
+                            }
+                            if(modeEtage==true){
+                                maCamera.position = createVector(maCamera.position.x, maCamera.position.y, 32);
                             }
 			                maCamera=deplacementArriere(maCamera);
 			                break;
                         // Déplacement vers la gauche
 		                case SDL_SCANCODE_LEFT :
-                            if(modePerso==true){
+                            if(modeRDC==true){
                                 maCamera.position = createVector(maCamera.position.x, maCamera.position.y, 12);
+                            }
+                            if(modeEtage==true){
+                                maCamera.position = createVector(maCamera.position.x, maCamera.position.y, 32);
                             }
 			                maCamera=deplacementGauche(maCamera);
 			                break;
                         // Déplacement vers la droite
 		                case SDL_SCANCODE_RIGHT :
-                            if(modePerso==true){
+                            if(modeRDC==true){
                                 maCamera.position = createVector(maCamera.position.x, maCamera.position.y, 12);
+                            }
+                            if(modeEtage==true){
+                                maCamera.position = createVector(maCamera.position.x, maCamera.position.y, 32);
                             }
 			                maCamera=deplacementDroite(maCamera);
 			                break;
-                        case SDL_SCANCODE_PAGEUP :
+                        case SDL_SCANCODE_SPACE :
 			                maCamera=deplacementMonter(maCamera);
 			                break;
-                        case SDL_SCANCODE_PAGEDOWN :
+                        case SDL_SCANCODE_LCTRL :
 			                maCamera=deplacementDescendre(maCamera);
 			                break;
                         case SDL_SCANCODE_KP_1 :
-                              maCamera=inEntree(maCamera);
+                            maCamera=inEntree(maCamera);
                             break;
                         case SDL_SCANCODE_KP_2 :
-                              maCamera=inSdb(maCamera);
+                            maCamera=inSdb(maCamera);
                             break;
                         case SDL_SCANCODE_KP_3 :
-                              maCamera=inSejour(maCamera);
+                            maCamera=inSejour(maCamera);
                             break;
                         case SDL_SCANCODE_KP_4 :
-                              maCamera=inCuisine(maCamera);
+                            maCamera=inCuisine(maCamera);
                             break;
                         case SDL_SCANCODE_KP_5 :
-                              maCamera=inChambre(maCamera);
+                            maCamera=inChambre(maCamera);
                             break;
                         case SDL_SCANCODE_KP_6 :
-                              maCamera=inBalcon(maCamera);
-                            break;                      
+                            maCamera=inBalcon(maCamera);
+                            break;
+                        case SDL_SCANCODE_Z :
+                            maCamera=OrienterHaut(maCamera);
+                            break;
+                        case SDL_SCANCODE_Q :
+                            maCamera=OrienterGauche(maCamera);
+                            break;
+                        case SDL_SCANCODE_S :
+                            maCamera=OrienterBas(maCamera);
+                            break;
+                        case SDL_SCANCODE_D :
+                            maCamera=OrienterDroite(maCamera);
+                            break;               
                         default:
                             break;
                     }

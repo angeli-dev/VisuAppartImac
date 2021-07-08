@@ -29,17 +29,18 @@ typedef struct Camera
     point orientation_2D;
 
     int compteur=0;
-    int i=0;
-    int piece=0;
-    
+    int i;  
 } Camera;
 
 Camera orienter(Camera cam, int xRel, int yRel);
 Camera setPointCible(Camera cam, Vector3D pointCible);
 Camera setPosition(Camera cam, Vector3D position);
-Camera visiteAuto (Camera cam);
-Camera OrienterGauche (Camera cam);
-Camera OrienterDroite (Camera cam);
+Camera visiteAuto(Camera cam);
+Camera OrienterGauche(Camera cam);
+Camera OrienterDroite(Camera cam);
+Camera OrienterHaut(Camera cam);
+Camera OrienterBas(Camera cam);
+Camera faireUnTour(Camera cam);
 Camera deplacementArriere(Camera cam);
 Camera deplacementAvant(Camera cam);
 Camera deplacementDroite(Camera cam);
