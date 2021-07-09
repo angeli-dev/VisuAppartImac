@@ -13,7 +13,7 @@ void drawScene(Camera camera){
                 camera.pointCible.x, camera.pointCible.y, camera.pointCible.z, 
                 camera.axeVertical.x, camera.axeVertical.y, camera.axeVertical.z);
 
-	glDrawRepere(100.0);
+	//glDrawRepere(100.0);
 
 	/* gestion de l'affichage (on ne veut pas voir derrière un objet) */
 	glEnable(GL_DEPTH_TEST);

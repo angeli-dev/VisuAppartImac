@@ -173,20 +173,17 @@ int main(int argc, char** argv)
                                 cout<<"Caméra à l'étage"<<endl;
                             }
                             break;
-                        case SDL_BUTTON_MIDDLE:
-                            maCamera.i=0;
-                            break;
                         default:
                             break;
                     }
 
                 /* Mouvements souris */
-               case SDL_MOUSEMOTION:
+                case SDL_MOUSEMOTION:
                     maCamera = orienter(maCamera, e.motion.xrel, e.motion.yrel);
                     break;
                 
                 /* Touches clavier */
-               case SDL_KEYDOWN:
+                case SDL_KEYDOWN:
                     switch(e.key.keysym.scancode) 
                     {   
                         case SDL_SCANCODE_ESCAPE :
@@ -203,6 +200,7 @@ int main(int argc, char** argv)
                             }
                             else{                      
                                 modeAuto=true;
+                                maCamera.i=360/maCamera.sensibilite;
                                 cout<<"Caméra automatique"<<endl;
                             }
                             break;

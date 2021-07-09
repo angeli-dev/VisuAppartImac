@@ -407,35 +407,40 @@ Camera deplacementDescendre(Camera cam){
     return cam;             
 }
 
-
 Camera inEntree(Camera cam){
     cam.position=createVector(0, 60, 12);
     cam.pointCible=createVector(70, 0, 12);
+    cam.i=0;
     return cam;
 }
 
 Camera inSdb(Camera cam){
     cam.position=createVector(35, 60, 12);
-    cam.pointCible=createVector(0, 60, 12);;
+    cam.pointCible=createVector(0, 60, 12);
+    cam.i=0;
     return cam;
 }
 Camera inSejour(Camera cam){
     cam.position=createVector(25, 25, 12);
     cam.pointCible=createVector(0, 0, 12);
+    cam.i=0;
     return cam;
 }
 Camera inCuisine(Camera cam){
     cam.position=createVector(-10, 25, 12);
     cam.pointCible=createVector(0, 0, 12);
+    cam.i=0;
     return cam;
 }
 Camera inChambre(Camera cam){
     cam.position=createVector(10, 35, 32);
     cam.pointCible=createVector(0, 0, 32);
+    cam.i=0;
     return cam;
 }
 Camera inBalcon(Camera cam){
     cam.position=createVector(25, -5, 32);
     cam.pointCible=createVector(0, 0, 32);
+    cam.i=0;
     return cam;
 }

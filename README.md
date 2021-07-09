@@ -15,7 +15,6 @@ __Installation__
 
 __Caméra__
 - **touche "Entrée"** : visite automatique de l'appartement / visite libre (par defaut la visite est libre)
-- **clic molette** : faire un tour sur soi-même 
 - **clic gauche + flèche** : caméra au rez-de-chaussez / à hauteur libre (par defaut la hauteur est libre)
 - **clic droit + flèche** : caméra à l'étage / à hauteur libre (par defaut la hauteur est libre)
 - **déplacement de la souris** : orientation globale de la caméra
@@ -27,8 +26,7 @@ __Caméra__
 - **touche "Ctrl"** : descendre la caméra
 - **touche "Espace"** : monter la caméra
 
-
-__Positions__
+__Visite d'une pièce__
 - **touche "1"** : Entrée
 - **touche "2"** : Salle de bain
 - **touche "3"** : Séjour
